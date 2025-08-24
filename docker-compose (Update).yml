@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  liquibase:
+    image: liquibase/liquibase:latest
+    container_name: liquibase-runner
+    volumes:
+      - ./liquibase-changes:/liquibase/changelog
+    working_dir: /liquibase/changelog
+    command:
+      [
+        "liquibase",
+        "--changeLogFile=changelog-master.xml",
+        "--url=jdbc:postgresql://my-postgres.cctvd8hknfff.us-west-2.rds.amazonaws.com:5432/postgres",
+        "--username=postgres",
+        "--password=HARSHharsh4035",
+        "update"
+      ]
